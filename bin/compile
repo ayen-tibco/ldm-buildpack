@@ -11,5 +11,5 @@ SB_BIN_DIR=$APP_DIR/opt/tibco/sb-cep/7.5/bin
 chmod -R +x $SB_BIN_DIR
 echo "Launching StreamBase/Liveview with project"
 cd $SB_BIN_DIR
-./lv-server run --liveview-port 80 $1
+./lv-server run --liveview-port $VCAP_APP_PORT $1
 
