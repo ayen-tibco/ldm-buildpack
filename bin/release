@@ -8,6 +8,6 @@ echo $HOME
 
 cat <<EOF
 ---
-default_process_types:
-    web: PATH=$PATH:$HOME/../opt/tibco/sb-cep/7.5/bin/lv-server $1
+config_vars:
+PATH: /app/bin:/usr/local/bin:/usr/bin:/bin
 EOF
