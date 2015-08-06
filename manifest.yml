@@ -1,0 +1,22 @@
+---
+language: ruby
+
+exclude_files:
+  - ".git/"
+  - ".gitignore"
+  - ".gitmodules"
+  - cf_spec/
+  - log/
+  - tests/
+  - cf.Gemfile
+  - cf.Gemfile.lock
+  - bin/package
+  - buildpack-packager/
+
+dependencies:
+ - name: sb-cep
+   version: 7.5.3
+   uri: https://ldm-sb.s3.amazonaws.com/TIB_sb-cep_7.5.3_runtime_gridlib_linux64.tar.gz
+   cf_stacks:
+      - cflinuxfs2
+   md5: c1a90dbd06c323f04bbaaa1b1c2c07e1
