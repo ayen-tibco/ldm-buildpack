@@ -7,4 +7,6 @@ cat <<EOF
 ---
 config_vars:
 PATH: /app/bin:/opt/tibco/sb-cep/7.5/bin:/usr/bin:/bin
+default_process_types:
+    web:
 EOF

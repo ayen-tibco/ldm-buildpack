@@ -4,12 +4,10 @@ set -eu
 
 echo "Downloading StreamBase/Liveview SF gridlib"
 wget https://ldm-sb.s3.amazonaws.com/TIB_sb-cep_7.5.3_runtime_gridlib_linux64.tar.gz
-CUR_PWD=`pwd`
+tar -xzvf ./TIB_sb-cep_7.5.3_runtime_gridlib_linux64.tar.gz
 
-cd /
-tar -xzvf $CUR_PWD/TIB_sb-cep_7.5.3_runtime_gridlib_linux64.tar.gz
-
+APP_DIR=`dirname $0`
+SB_BIN_DIR=$APP_DIR/opt/tibco/sb-cep/7.5/bin
 echo "Launching StreamBase/Liveview with project"
-cd /opt/tibco/sb-cep/7.5/bin
-./lv-server run $1
+$SB_BIN_DIR/lv-server run $1
 
