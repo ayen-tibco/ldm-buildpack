@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# bin/release <build-dir>
+
+build_dir = "$1"
+
+cat <<EOF
+---
+config_vars:
+PATH: /app/bin:/opt/tibco/sb-cep/7.5/bin:/usr/bin:/bin
+EOF

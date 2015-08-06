@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# bin/detect Liveview DataMart project dir
+LVDM_DIR = $1
+
+if [ -f $LVDM_DIR/sbd.sbconf ]; then
+   echo "Found Liveview Datamart Project sbd.sbconf file." && exit 0
+else
+  echo "No sbd.sbconf file found!" && exit 1
+fi
