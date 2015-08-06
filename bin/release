@@ -2,11 +2,12 @@
 # bin/release <build-dir>
 
 build_dir = "$1"
+STAGE_DIR=$(dirname $BUILD_DIR)
+echo $STAGE_DIR
+echo $HOME
 
 cat <<EOF
 ---
-config_vars:
-PATH: /app/bin:/opt/tibco/sb-cep/7.5/bin:/usr/bin:/bin
 default_process_types:
-    web:
+    web: PATH=$PATH:$HOME/../opt/tibco/sb-cep/7.5/bin/lv-server $1
 EOF

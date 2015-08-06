@@ -9,7 +9,7 @@ tar -xzvf ./TIB_sb-cep_7.5.3_runtime_gridlib_linux64.tar.gz
 APP_DIR=`pwd`
 SB_BIN_DIR=$APP_DIR/opt/tibco/sb-cep/7.5/bin
 chmod -R +x $SB_BIN_DIR
-echo "Launching StreamBase/Liveview with project"
-cd $SB_BIN_DIR
-./lv-server run $1
+#echo "Launching StreamBase/Liveview with project"
+#cd $SB_BIN_DIR
+#./lv-server run $1
 
