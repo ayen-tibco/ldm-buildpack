@@ -7,5 +7,5 @@ chmod -R +x $SB_BIN_DIR
 cat <<EOF
 ---
 default_process_types:
-    web: $SB_BIN_DIR/lv-server run --liveview-port $PORT /tmp/staged/app
+    web: $SB_BIN_DIR/lv-server run --liveview-port $PORT /home/vcap/app
 EOF
