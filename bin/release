@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # bin/release <build-dir>
-APP_DIR=`pwd`
-SB_BIN_DIR=$APP_DIR/opt/tibco/sb-cep/7.5/bin
-chmod -R +x $SB_BIN_DIR
+BUILD_DIR=$1
+
+SOURCEY=sourcey
 
 cat <<EOF
 ---
 default_process_types:
-    web: $SB_BIN_DIR/lv-server run --liveview-port $PORT /home/vcap/app
+    web: PATH=\$HOME/../$SOURCEY/bin:\$PATH ./SourceyStart.sh
 EOF
