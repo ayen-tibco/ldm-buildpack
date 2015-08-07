@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 # bin/release <build-dir>
-
-BUILD_DIR="$1"
-STAGE_DIR=$(dirname $BUILD_DIR)
-echo $STAGE_DIR
-echo $HOME
+APP_DIR=`pwd`
+SB_BIN_DIR=$APP_DIR/opt/tibco/sb-cep/7.5/bin
+chmod -R +x $SB_BIN_DIR
 
 cat <<EOF
 ---
-config_vars:
-PATH: /app/bin:/usr/local/bin:/usr/bin:/bin
+default_process_types:
+    web: $SB_BIN_DIR/lv-server run --liveview-port $PORT $1
 EOF
