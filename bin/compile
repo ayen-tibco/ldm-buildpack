@@ -24,8 +24,8 @@ source $BUILDPACK_DIR/lib/SourceyBuildLib.inc
 
 mkdir -p $BUILD_DIR $CACHE_DIR
 
-SB=$BUILD_DIR/sample_lv-javascript/SourceyBuild.sh
-
+SB=$BUILD_DIR/SourceyBuild.sh
+ls $SB
 echo "       Environment"
 echo "       -  BUILD_DIR=$BUILD_DIR"
 echo "       -  WORK_DIR=$WORK_DIR"
@@ -75,7 +75,7 @@ echo "Compiling Liveview App project"
 cd $SB_BIN_DIR
 ./lv-server compile $1
 
-chmod 755 $BUILD_DIR/sample_lv-javascript/SourceyStart.sh
+chmod 755 $BUILD_DIR/SourceyStart.sh
 
 cd $HOME
 rm -rf $WORK_DIR
