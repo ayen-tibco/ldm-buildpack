@@ -69,7 +69,7 @@ if [ -r $BUILD_DIR/SourceyBuildApp.sh ]; then
 fi
 
 # compile lv project to speed up upload of droplet to DEA...just in case
-SB_BIN_DIR=$CACHE_DIR/opt/tibco/sb-cep/7.5/bin
+SB_BIN_DIR=$CACHE_DIR/$SOURCEY/opt/tibco/sb-cep/7.5/bin
 chmod -R +x $SB_BIN_DIR
 echo "Compiling Liveview App project"
 cd $SB_BIN_DIR
