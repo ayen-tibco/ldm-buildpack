@@ -25,8 +25,7 @@ source $BUILDPACK_DIR/lib/SourceyBuildLib.inc
 mkdir -p $BUILD_DIR $CACHE_DIR
 
 SB=$BUILD_DIR/SourceyBuild.sh
-source $SB
-ls -al $SB
+ls -al $BUILD_DIR
 if [ -f $SB ]; then
    # to force a full recompile, increment the Rx part of the md5sum
    # only do this if you change something fundamental in the compile
