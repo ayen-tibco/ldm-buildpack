@@ -24,8 +24,16 @@ source $BUILDPACK_DIR/lib/SourceyBuildLib.inc
 
 mkdir -p $BUILD_DIR $CACHE_DIR
 
-SB=$BUILD_DIR/SourceyBuild.sh
-ls -al $BUILD_DIR
+SB=$BUILD_DIR/sample_lv-javascript/SourceyBuild.sh
+
+echo "       Environment"
+echo "       -  BUILD_DIR=$BUILD_DIR"
+echo "       -  WORK_DIR=$WORK_DIR"
+echo "       -  STAGE_DIR=$STAGE_DIR"
+echo "       -  PREFIX=$PREFIX"
+echo "       -  CACHE_DIR=$CACHE_DIR"
+echo "       -  BUILDPACK_DIR=$BUILDPACK_DIR"
+
 if [ -f $SB ]; then
    # to force a full recompile, increment the Rx part of the md5sum
    # only do this if you change something fundamental in the compile
