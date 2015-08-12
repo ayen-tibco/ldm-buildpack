@@ -39,6 +39,10 @@ echo "       -  STAGE_DIR=$STAGE_DIR"
 echo "       -  PREFIX=$PREFIX"
 echo "       -  CACHE_DIR=$CACHE_DIR"
 echo "       -  BUILDPACK_DIR=$BUILDPACK_DIR"
+echo "       -  VERSION_DIR=$VERSION_DIR"
+echo "       -  ARCHIVE=$ARCHIVE"
+echo "       -  ARCHIVE_DIR=$ARCHIVE_DIR"
+
 
 if [ -f $SB ]; then
    # to force a full recompile, increment the Rx part of the md5sum
@@ -125,3 +129,6 @@ vendor_bin
 
 cd $HOME
 rm -rf $WORK_DIR
+echo "-----> Done haproxy compiling."
+
+exit 0
