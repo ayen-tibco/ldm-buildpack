@@ -16,8 +16,14 @@ CACHE_DIR=$2
 PREFIX=$HOME/$SOURCEY
 START_DIR=`pwd`
 BUILDPACK_DIR=$(dirname `dirname $0`)
-
 WORK_DIR=/tmp/$SOURCEY.$$
+VERSION_DIR=`cd $(dirname $0); cd ..; pwd`
+VERSION=`cat $VERSION_DIR/VERSION | sed 's/[\r\n]*$//'`
+ARCHIVE=`basename $VERSION`
+ARCHIVE_DIR=`echo $ARCHIVE | sed 's/\.tar\.gz$//'`
+
+
+
 mkdir -p $WORK_DIR
 
 source $BUILDPACK_DIR/lib/SourceyBuildLib.inc
@@ -76,6 +82,46 @@ cd $SB_BIN_DIR
 ./lv-server compile $1
 
 chmod 755 $BUILD_DIR/SourceyStart.sh
+
+echo "Build haproxy now"
+get_source() {
+  if [ ! -d $CACHE_DIR ]; then
+    echo "Creating $CACHE_DIR"
+    mkdir $CACHE_DIR
+  fi
+
+
+  if [ -e $CACHE_DIR/$ARCHIVE ]; then
+    echo "Don't need to download, already exists"
+  else
+    echo "Downloading $VERSION..."
+    curl $VERSION -o $CACHE_DIR/$ARCHIVE
+  fi
+}
+
+unpack_source() {
+  if [ ! -d $CACHE_DIR/$ARCHIVE_DIR ]; then
+    echo "Unpacking..."
+    `tar xzf $CACHE_DIR/$ARCHIVE -C $CACHE_DIR`
+  fi
+}
+
+compile_source() {
+  unpack_source
+  if [ ! -f $CACHE_DIR/$ARCHIVE_DIR/haproxy ]; then
+    echo "Compiling $ARCHIVE_DIR..."
+    cd $CACHE_DIR/$ARCHIVE_DIR
+    make TARGET=linux2628 USE_OPENSSL=1
+  fi
+}
+
+vendor_bin() {
+  cp $CACHE_DIR/$ARCHIVE_DIR/haproxy $BUILD_DIR/haproxy
+}
+
+get_source
+compile_source
+vendor_bin
 
 cd $HOME
 rm -rf $WORK_DIR
